@@ -1,0 +1,33 @@
+{
+  "name": "todo-server",
+  "version": "1.0.0",
+  "description": "Todo server with endpoints for CRUD ops of todos and auth functionality",
+  "main": "app.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abhay-tank/todo-server.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "Todos",
+    "Todo",
+    "JWT",
+    "auth"
+  ],
+  "author": "Abhay Tank",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abhay-tank/todo-server/issues"
+  },
+  "homepage": "https://github.com/abhay-tank/todo-server#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "uniqid": "^5.2.0"
+  }
+}
