@@ -1,5 +1,4 @@
 const dbs = require("../services/databaseService");
-
 // GET
 const getAllTodos = (req, res) => {
   console.log(dbs.db.data);

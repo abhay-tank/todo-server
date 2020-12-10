@@ -1,10 +1,12 @@
 const fs = require("fs");
 const util = require("util");
+const path = require("path");
 const writeFileAsync = util.promisify(fs.writeFileSync);
 
 class FileService {
   // source will be fetched from env in future
-  constructor(source) {
+  constructor() {
+    const source = path.join(__dirname, "..", "data", "db.json");
     try {
       this.data = JSON.parse(fs.readFileSync(source, { encoding: "utf-8" }));
     } catch (error) {
