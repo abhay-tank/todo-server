@@ -4,7 +4,9 @@
   "description": "Todo server with endpoints for CRUD ops of todos and auth functionality",
   "main": "app.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
