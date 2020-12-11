@@ -11,5 +11,5 @@ app.use("/todos", todoRoutes);
 app.use("/auth", authRoutes);
 
 app.listen(config.PORT, () => {
-  console.log(`Server started on http://localhost:${config.PORT}/`);
+	console.log(`Server started on http://localhost:${config.PORT}/`);
 });
