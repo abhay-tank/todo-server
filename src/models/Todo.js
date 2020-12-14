@@ -22,6 +22,10 @@ const todoSchema = new mongoose.Schema(
 			type: String,
 			required: [true, "Todo content is required."],
 		},
+		todoCompleted: {
+			type: Boolean,
+			default: false,
+		},
 	},
 	{
 		timestamps: true,

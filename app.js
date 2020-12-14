@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+
+// Check if server is running in PROD or DEV
 if (!process.env.NODE_ENV || !process.env.NODE_ENV == "production") {
 	require("dotenv").config({ path: path.join(__dirname, "config.env") });
 }
