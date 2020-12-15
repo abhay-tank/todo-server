@@ -1,4 +1,9 @@
 const express = require("express");
+const {
+  checkConfirmPassword,
+  hashPassword,
+  checkUserExists,
+} = require("../middlewares/validations/authValidations");
 const authRoutes = express.Router();
 const {
   signUp,
@@ -6,8 +11,8 @@ const {
   changePassword,
   signOut,
 } = require("../controllers/authController");
-authRoutes.route("/signup").post(signUp);
-authRoutes.route("/signIn").post(signIn);
+authRoutes.route("/signup").post(checkConfirmPassword, hashPassword, signUp);
+authRoutes.route("/signIn").post(checkUserExists, signIn);
 authRoutes.route("/changePassword").patch(changePassword);
 authRoutes.route("/signOut").get(signOut);
 
