@@ -16,7 +16,18 @@ const signUp = (req, res) => {
   user
     .save()
     .then((result) => {
-      sendSuccessResponse(200, "Successful", result, res);
+      sendSuccessResponse(
+        200,
+        "Successful",
+        {
+          uid: result.uid,
+          firstName: result.firstName,
+          lastName: result.lastName,
+          email: result.email,
+          accountVerified: result.accountVerified,
+        },
+        res
+      );
     })
     .catch((err) => {
       sendErrorResponse(

@@ -87,6 +87,18 @@ const validatePasswordFormat = (req, res, next) => {
 };
 
 const validateEmailFormat = (req, res, next) => {
+  let validationArray = ["email", "password"];
+  let keysExists = validationArray.every((key) => req.body[key]);
+  if (!keysExists) {
+    return sendErrorResponse(
+      new ErrorResponse(
+        400,
+        "Unsuccessful",
+        "Email or password not present in request"
+      ),
+      res
+    );
+  }
   if (!req.body.email.trim().length) {
     return sendErrorResponse(
       new ErrorResponse(400, "Unsuccessful", "Email cannot be empty"),
