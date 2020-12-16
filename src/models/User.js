@@ -6,12 +6,11 @@ const userSchema = new mongoose.Schema(
 		uid: {
 			type: String,
 			default: uniqid(),
-			required: true,
 			unique: true,
 		},
 		firstName: {
 			type: String,
-			required: true,
+			required: [true, "firstName required"],
 		},
 		lastName: {
 			type: String,

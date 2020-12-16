@@ -2,7 +2,6 @@ const Todo = require("../models/Todo");
 const sendSuccessResponse = require("../middlewares/responses/successResponse");
 const sendErrorResponse = require("../middlewares/responses/errorResponse");
 const ErrorResponse = require("../models/ErrorResponse");
-
 const selectProperties =
 	"todoid todoTitle todoContent createdAt updatedAt -_id";
 
@@ -60,7 +59,7 @@ const getTodo = (req, res) => {
 const updateTodo = (req, res) => {
 	let validationArray = ["todoTitle", "todoContent", "todoCompleted"];
 	let updates = {};
-	validationArray.every((key) => {
+	validationArray.forEach((key) => {
 		if (req.body[key]) {
 			updates[key] = req.body[key];
 		}
