@@ -3,7 +3,7 @@ const path = require("path");
 
 // Check if server is running in PROD or DEV
 if (!process.env.NODE_ENV || !process.env.NODE_ENV == "production") {
-	require("dotenv").config({ path: path.join(__dirname, "config.env") });
+  require("dotenv").config({ path: path.join(__dirname, "config.env") });
 }
 const { config } = require("./src/configuration/config");
 const mongoose = require("mongoose");
@@ -12,22 +12,23 @@ const authRoutes = require("./src/routes/authRoutes");
 
 // Launch Server after database is connected
 mongoose
-	.connect(config.DATABASE_URL, {
-		useUnifiedTopology: true,
-		useNewUrlParser: true,
-		useCreateIndex: true,
-	})
-	.then(() => {
-		const app = express();
+  .connect(config.DATABASE_URL, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+  })
+  .then(() => {
+    const app = express();
 
-		app.use(express.json());
-		app.use("/todos", todoRoutes);
-		app.use("/auth", authRoutes);
+    app.use(express.json());
+    app.use("/todos", todoRoutes);
+    app.use("/auth", authRoutes);
 
-		app.listen(config.PORT, () => {
-			console.log(`Server started on http://localhost:${config.PORT}/`);
-		});
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+    app.listen(config.PORT, () => {
+      console.log(`Server started on http://localhost:${config.PORT}/`);
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+  });

@@ -109,7 +109,6 @@ const checkUserExists = async (req, res, next) => {
         "uid email firstName lastName accountVerified accountVerificationToken  -_id"
       )
       .then((result) => {
-        console.log("Check user exists signup", result);
         if (result) {
           return sendErrorResponse(
             new ErrorResponse(403, "Unsuccessful", "User already exists"),
@@ -130,7 +129,6 @@ const checkUserExists = async (req, res, next) => {
     User.findOne({ email: req.body.email })
       .then((result) => {
         if (result) {
-          console.log("Check user exists signin", result);
           req.currentUser = result;
           next();
         } else {
@@ -168,7 +166,13 @@ const checkAuthHeader = async (req, res, next) => {
                 {
                   jwt: jwtToken,
                 },
-                result,
+                {
+                  uid: req.currentUser.uid,
+                  firstName: req.currentUser.firstName,
+                  lastName: req.currentUser.lastName,
+                  email: req.currentUser.email,
+                  accountVerified: req.currentUser.accountVerified,
+                },
               ],
               res
             );
@@ -194,9 +198,11 @@ const checkAuthHeader = async (req, res, next) => {
         res
       );
     }
+  } else {
+    next();
   }
-  next();
 };
+
 const validatePassword = async (req, res, next) => {
   bcrypt
     .compare(req.body.password, req.currentUser.password)
@@ -217,6 +223,7 @@ const validatePassword = async (req, res, next) => {
       );
     });
 };
+
 module.exports = {
   checkUserExists,
   checkAuthHeader,

@@ -39,7 +39,13 @@ const signIn = async (req, res) => {
       {
         jwt: token,
       },
-      req.currentUser,
+      {
+        uid: req.currentUser.uid,
+        firstName: req.currentUser.firstName,
+        lastName: req.currentUser.lastName,
+        email: req.currentUser.email,
+        accountVerified: req.currentUser.accountVerified,
+      },
     ],
     res
   );
