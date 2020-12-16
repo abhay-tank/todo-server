@@ -5,7 +5,7 @@ Kipplist API is a Nodejs Express REST API which provides CRUD functionality of T
 ### Base URL
 
 ```
-https://feather-api.herokuapp.com
+https://kipplist.herokuapp.com/
 ```
 
 ## API ENDPOINTS
@@ -33,11 +33,11 @@ https://feather-api.herokuapp.com
 
 ```json
 {
-  "firstName": "Jon",
-  "lastName": "Doe",
-  "email": "jondoe@mail.com",
-  "password": "JonDoee@123",
-  "confirmPassword": "JonDoee@123"
+	"firstName": "Jon",
+	"lastName": "Doe",
+	"email": "jondoe@mail.com",
+	"password": "JonDoee@123",
+	"confirmPassword": "JonDoee@123"
 }
 ```
 
@@ -51,8 +51,8 @@ https://feather-api.herokuapp.com
 
 ```json
 {
-  "email": "jondoe@mail.com",
-  "password": "JonDoee@123"
+	"email": "jondoe@mail.com",
+	"password": "JonDoee@123"
 }
 ```
 
@@ -90,8 +90,8 @@ A simple **GET** request on /todos will return all todos in database.
 
 ```json
 {
-  "todoTitle": "POST Req",
-  "todoContent": "Will create new Todo"
+	"todoTitle": "POST Req",
+	"todoContent": "Will create new Todo"
 }
 ```
 
@@ -101,13 +101,13 @@ A simple **GET** request on /todos will return all todos in database.
 /todos:id
 ```
 
-**PATCH** request on /todos with specified id in params and request body with specified key value will update specified blog.
+**PATCH** request on /todos with specified id in params and request body with specified key value will update specified todo.
 
 ```json
 {
-  "todoTitle": "PATCH Req",
-  "todoContent": "Will update Todo",
-  "todoCompleted": true / false
+	"todoTitle": "PATCH Req",
+	"todoContent": "Will update Todo",
+	"todoCompleted": true / false
 }
 ```
 
@@ -133,23 +133,28 @@ A simple **GET** request on /todos will return all todos in database.
     ├── configuration
     │   └── config.js
     ├── controllers
-    │   └── blogsController.js
+    │   ├── authController.js
+    │   └── todoController.js
     ├── data
-    │   └── blogs.json
+    │   └── db.json
     ├── helpers
-    │   └── validateLinks.js
+    │   ├── hashString.js
+    │   └── jwtTokenFunctions.js
     ├── middlewares
-    │   ├── checkBlogId.js
+    │   ├── protectRoute.js
     │   ├── responses
-    │   │   ├── sendErrorResponse.js
-    │   │   └── sendSuccessResponse.js
-    │   └── validateRequestBody.js
-    ├── Models
-    │   ├── Blog.js
-    │   ├── BlogLink.js
-    │   └── ErrorResponse.js
+    │   │   ├── errorResponse.js
+    │   │   └── successResponse.js
+    │   └── validations
+    │       ├── authValidations.js
+    │       └── todoValidations.js
+    ├── models
+    │   ├── ErrorResponse.js
+    │   ├── Todo.js
+    │   └── User.js
     └── routes
-        └── blogsRouter.js
+        ├── authRoutes.js
+        └── todoRoutes.js`
 ```
 
 ### Installation
@@ -175,4 +180,4 @@ $ NODE_ENV=production npm run start
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6ee50b3a23ca2d229567)
 
-##### Deployed on Heroku - [https://feather-api.herokuapp.com/](https://feather-api.herokuapp.com/)
+##### Deployed on Heroku - [https://kipplist.herokuapp.com/](https://kipplist.herokuapp.com/)
