@@ -16,7 +16,7 @@ const {
   signOut,
 } = require("../controllers/authController");
 authRoutes
-  .route("/signup")
+  .route("/signUp")
   .post(
     checkAuthHeader,
     validateEmailFormat,

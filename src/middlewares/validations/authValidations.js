@@ -131,7 +131,7 @@ const checkUserExists = async (req, res, next) => {
         }
       })
       .catch((err) => {
-        console.log("Error ==>", err);
+        console.error("Error ==>", err);
         return sendErrorResponse(
           new ErrorResponse(500, "Unsuccessful", "Error checking user exists."),
           res
@@ -161,12 +161,10 @@ const checkUserExists = async (req, res, next) => {
 
 const checkAuthHeader = async (req, res, next) => {
   if (req.headers.authorization) {
-    console.log("Checking auth header");
     let jwtToken = req.headers.authorization.split(" ")[1];
     let decoded;
     try {
       decoded = await verifyToken(jwtToken, config.JWT_SECRET);
-      console.log("Decoded", decoded);
       User.findOne({ email: decoded.email })
         .then((result) => {
           if (result) {
@@ -193,7 +191,7 @@ const checkAuthHeader = async (req, res, next) => {
           }
         })
         .catch((err) => {
-          console.log("Error ==>", err);
+          console.error("Error ==>", err);
           return sendErrorResponse(
             new ErrorResponse(
               500,
@@ -204,7 +202,7 @@ const checkAuthHeader = async (req, res, next) => {
           );
         });
     } catch (err) {
-      console.log("Error ==>", err);
+      console.error("Error ==>", err);
       return sendErrorResponse(
         new ErrorResponse(401, "Unsuccessful", "Invalid Token"),
         res
@@ -228,7 +226,7 @@ const validatePassword = async (req, res, next) => {
       next();
     })
     .catch((err) => {
-      console.log("ERROR ===>", err);
+      console.error("ERROR ===>", err);
       return sendErrorResponse(
         new ErrorResponse(500, "Unsuccessful", "Error comparing passwords."),
         res
