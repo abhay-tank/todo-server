@@ -1,6 +1,7 @@
 const { config } = require("../configuration/config");
 const User = require("../models/User");
-
+const sendErrorResponse = require("../middlewares/responses/errorResponse");
+const ErrorResponse = require("../models/ErrorResponse");
 const protectRoute = async (req, res, next) => {
 	//   console.log("headers in req body", req.headers.authorization);
 	// extract token
