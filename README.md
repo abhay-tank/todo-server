@@ -31,6 +31,8 @@ https://kipplist.herokuapp.com/
 - A mixture of letters and numbers.
 - Inclusion of at least one special character from [!, @, #, $, %, ^, &, *]
 
+**If request header contains bearer token, user will be automatically signed in.**
+
 ```json
 {
 	"firstName": "Jon",
@@ -48,6 +50,7 @@ https://kipplist.herokuapp.com/
 ```
 
 **POST** request to /auth/signIn with specified body will login new user and set JWT token inside Cookie.
+**If request header contains bearer token, user will be automatically signed in.**
 
 ```json
 {
@@ -55,6 +58,14 @@ https://kipplist.herokuapp.com/
 	"password": "JonDoee@123"
 }
 ```
+
+#### POST - SignOut 👋
+
+```
+/auth/signOut
+```
+
+**GET** request on /auth/signOut with request header containing bearer token will signout user else will be asked to sign in first.
 
 ## Todos 📃
 
