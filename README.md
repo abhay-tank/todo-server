@@ -175,6 +175,10 @@ A simple **GET** request on /todos will return all todos in database.
 Install the dependencies and devDependencies and start the server.
 Create config.env by refering config.sample.env
 
+Make sure to create config.env if running in _development_ mode or set environment vars in _production_ mode. Refer **config.sample.env** for setting env variables.
+
+**In project all variables needed from env are fetched into config ONLY.**
+
 ```sh
 $ npm install
 $ npm run dev
@@ -192,3 +196,12 @@ $ NODE_ENV=production npm run start
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/6ee50b3a23ca2d229567)
 
 ##### Deployed on Heroku - [https://kipplist.herokuapp.com/](https://kipplist.herokuapp.com/)
+
+### Todos for kipplist
+
+- Add shared todo functionality.
+- Add fetch todos of user functionality.
+- Add verify user email.
+- Add change user password.
+- Add jwt token time to live.
+- Refactor code to use pre validation or schema methods.
