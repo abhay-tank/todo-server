@@ -2,6 +2,8 @@
 
 Kipplist API is a Nodejs Express REST API which provides CRUD functionality of Todos along with Authentication.
 
+Kipplist uses MongoDB to store Todos and User data.
+
 ### Base URL
 
 ```
@@ -170,7 +172,7 @@ A simple **GET** request on /todos will return all todos in database.
 
 ### Installation
 
-#### Kipplist requires [Node.js](https://nodejs.org/) v12+ to run.
+#### Kipplist requires [Node.js](https://nodejs.org/) v12+ and [MongoDB](https://www.mongodb.com/) or [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) to run.
 
 Install the dependencies and devDependencies and start the server.
 Create config.env by refering config.sample.env
